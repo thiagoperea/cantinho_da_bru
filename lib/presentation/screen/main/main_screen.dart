@@ -17,6 +17,15 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Cantinho da Bru"),
+        actions: [
+          IconButton(
+            icon: const Icon(LineIcons.questionCircle),
+            tooltip: 'About',
+            onPressed: () {
+              // handle the press
+            },
+          )
+        ],
       ),
       body: Container(
         color: Theme.of(context).colorScheme.surface,
