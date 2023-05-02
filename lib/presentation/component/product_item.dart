@@ -1,4 +1,4 @@
-import 'package:cantinho_da_bru/data/item_entry.dart';
+import 'package:cantinho_da_bru/data/product_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -14,7 +14,7 @@ class ProductItem extends StatelessWidget {
     return Card(
       color: Theme.of(context).colorScheme.primaryContainer,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Theme.of(context).colorScheme.outline),
+        side: BorderSide(color: Theme.of(context).colorScheme.outlineVariant),
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: InkWell(

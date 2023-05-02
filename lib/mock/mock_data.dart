@@ -1,4 +1,5 @@
-import 'package:cantinho_da_bru/data/item_entry.dart';
+import 'package:cantinho_da_bru/data/product_entry.dart';
+import 'package:cantinho_da_bru/data/shopping_bag_entry.dart';
 
 class MockData {
   const MockData();
@@ -18,5 +19,17 @@ class MockData {
     truffles.add(new ProductEntry("Trufa de Amêndoas", "Feita com amêndoas crocantes e cobertura de chocolate meio amargo, essa trufa é uma experiência deliciosa", 6.50));
 
     return truffles;
+  }
+
+  static List<ShoppingBagEntry> generateCart(){
+    List<ShoppingBagEntry> cartItems = [];
+
+    ProductEntry p1 = ProductEntry("Trufa de Framboesa", "Feita com framboesas frescas e cobertura de chocolate ao leite, essa trufa é o equilíbrio perfeito entre doce e azedo", 6.50);
+    ProductEntry p2 = new ProductEntry("Trufa de Pistache", "Com um recheio delicado de pistache e cobertura de chocolate branco, essa trufa é perfeita para quem busca um sabor sofisticado", 7.00);
+
+    cartItems.add(new ShoppingBagEntry(p1, 12));
+    cartItems.add(new ShoppingBagEntry(p2, 7));
+
+    return cartItems;
   }
 }
