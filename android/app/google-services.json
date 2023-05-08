@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1041325937836",
+    "project_id": "cantinho-da-bru",
+    "storage_bucket": "cantinho-da-bru.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041325937836:android:e055fb6e9adf7df0f9fb09",
+        "android_client_info": {
+          "package_name": "com.example.cantinho_da_bru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041325937836-boeaebqqi3q8ge59t4ihmstv745n4e04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBepdJEpwV1E4istoTuJqCWTUBDjWT3-f8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1041325937836-boeaebqqi3q8ge59t4ihmstv745n4e04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

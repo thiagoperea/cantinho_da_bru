@@ -2,8 +2,9 @@ import 'package:cantinho_da_bru/data/product_entry.dart';
 
 class ShoppingBagEntry {
 
+  final int id;
   final ProductEntry product;
-  final int quantity;
+  int quantity;
 
-  ShoppingBagEntry(this.product, this.quantity);
+  ShoppingBagEntry(this.id, this.product, this.quantity);
 }

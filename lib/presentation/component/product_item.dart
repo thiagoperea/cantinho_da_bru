@@ -1,6 +1,8 @@
 import 'package:cantinho_da_bru/data/product_entry.dart';
+import 'package:cantinho_da_bru/domain/shopping_bag.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class ProductItem extends StatelessWidget {
   ProductItem({Key? key, required this.product}) : super(key: key);
@@ -17,54 +19,75 @@ class ProductItem extends StatelessWidget {
         side: BorderSide(color: Theme.of(context).colorScheme.outlineVariant),
         borderRadius: BorderRadius.circular(16.0),
       ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16.0),
-        onTap: () {},
-        child: Container(
-          height: 200,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      product.name,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: Theme.of(context).colorScheme.onPrimaryContainer,
-                          ),
-                    ),
-                    SizedBox(height: 12),
-                    Expanded(
-                      child: Text(
-                        product.description,
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              color: Theme.of(context).colorScheme.onPrimaryContainer,
-                            ),
-                      ),
-                    ),
-                    Text(
-                      formatter.format(product.value),
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: Theme.of(context).colorScheme.onPrimaryContainer,
-                          ),
-                    ),
-                  ],
-                ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: Theme.of(context).colorScheme.onPrimaryContainer,
+                        ),
+                  ),
+                  SizedBox(height: 12),
+                  _buildDescription(context),
+                  Text(
+                    formatter.format(product.value),
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: Theme.of(context).colorScheme.onPrimaryContainer,
+                        ),
+                  ),
+                ],
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.asset("images/trufa-1.jpg"),
+            ),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                padding: EdgeInsets.all(16),
               ),
-            ],
-          ),
+              child: Text("Comprar"),
+              onPressed: () {
+                var useCase = context.read<ShoppingBag>();
+
+                useCase.addItem(product);
+
+                ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+                  SnackBar(
+                    content: Text("Adicionado com sucesso!"),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  Widget _buildDescription(BuildContext context) {
+    if (product.description.isEmpty) {
+      return Container();
+    }
+
+    return Column(
+      children: [
+        Text(
+          product.description,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
+        ),
+        SizedBox(height: 24),
+      ],
     );
   }
 }
